@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api", "Web.Api\Web.Api.csproj", "{DDE3444D-9DB2-40F5-8376-47B716B51D04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaEntidad", "CapaEntidad\CapaEntidad.csproj", "{4F0CDE4B-4ACC-4CB9-98A8-8A2CEAA0D358}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Cliente", "Web.Cliente\Web.Cliente.csproj", "{B4FB5CE5-D15B-4D42-8836-9F8F33F7130E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4F0CDE4B-4ACC-4CB9-98A8-8A2CEAA0D358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F0CDE4B-4ACC-4CB9-98A8-8A2CEAA0D358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F0CDE4B-4ACC-4CB9-98A8-8A2CEAA0D358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4FB5CE5-D15B-4D42-8836-9F8F33F7130E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4FB5CE5-D15B-4D42-8836-9F8F33F7130E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4FB5CE5-D15B-4D42-8836-9F8F33F7130E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4FB5CE5-D15B-4D42-8836-9F8F33F7130E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
