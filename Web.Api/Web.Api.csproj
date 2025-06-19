@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CapaEntidad\CapaEntidad.csproj" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

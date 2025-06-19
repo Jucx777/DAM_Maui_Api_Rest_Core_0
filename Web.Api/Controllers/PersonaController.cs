@@ -21,7 +21,7 @@ namespace Web.Api.Controllers
 
             try
             {
-                using (DbAba302BdveterinariaContext bd = new DbAba302BdveterinariaContext())
+                using (DbAba87fBdveterinariaContext bd = new DbAba87fBdveterinariaContext())
                 {
                     lista = (from persona in bd.Personas
                              where persona.Bhabilitado == 1
@@ -55,7 +55,7 @@ namespace Web.Api.Controllers
 
             try
             {
-                using (DbAba302BdveterinariaContext bd = new DbAba302BdveterinariaContext())
+                using (DbAba87fBdveterinariaContext bd = new DbAba87fBdveterinariaContext())
                 {
                     lista = (from persona in bd.Personas
                              where persona.Bhabilitado == 1
@@ -87,7 +87,7 @@ namespace Web.Api.Controllers
             PersonaCLS oPersonaCLS = new PersonaCLS();
             try
             {
-                using (DbAba302BdveterinariaContext bd = new DbAba302BdveterinariaContext())
+                using (DbAba87fBdveterinariaContext bd = new DbAba87fBdveterinariaContext())
                 {
                     oPersonaCLS = (from persona in bd.Personas
                                    where persona.Bhabilitado == 1 && persona.Iidpersona == id

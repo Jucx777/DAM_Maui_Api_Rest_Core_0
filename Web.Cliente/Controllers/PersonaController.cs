@@ -40,8 +40,11 @@ namespace Web.Cliente.Controllers
             //string cadena = await cliente.GetStringAsync("api/Persona/" + nombrecompleto);
             //List<PersonaCLS> lista = JsonSerializer.Deserialize<List<PersonaCLS>>(cadena);
             //return lista;
-
-            return await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona/"+nombrecompleto);
+            if (nombrecompleto != null)
+            {
+                return await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona/" + nombrecompleto);
+            }
+            return await ListarPersonas();
         }
 
         //Filtrar personas
