@@ -59,6 +59,37 @@ namespace Web.Cliente.Controllers
             return await ClientHttp.Get<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona/recuperarPersona/" + id);
         }
 
+        //Metodo para Eliminar DELETE
+        public async Task<int> EliminarPersona(int id)
+        {
+            return await ClientHttp.Delete(_httpClientFactory, urlbase, "/api/Persona/" + id);
+        }
+
+        //Metodo para Guardar Post
+        //metodo para guardar
+        public async Task<int> GuardarPersona(PersonaCLS oPersonaCLS/*, IFormFile fotoenviar*/)
+        {
+
+            //byte[] buffer = new byte[0];
+            //string nombrefoto = "";
+            //if (fotoenviar != null)
+            //{
+            //    using (MemoryStream ms = new MemoryStream())
+            //    {
+            //        fotoenviar.CopyTo(ms);
+
+            //        nombrefoto = fotoenviar.FileName;
+            //        buffer = ms.ToArray();
+            //    }
+            //}
+
+            //oPersonaCLS.nombrearchivo = nombrefoto;
+            //oPersonaCLS.archivo = buffer;
+
+
+            return await ClientHttp.Post(_httpClientFactory, urlbase, "/api/Persona/", oPersonaCLS);
+        }
+
         public IActionResult Index()
         {
             return View();

@@ -14,22 +14,19 @@ function listar() {
 		editar: true,
 		eliminar: true,
 		titlePopup: "Persona",
-		urleliminar: "Persona/eliminarPersona",
+		urleliminar: "Persona/EliminarPersona",
 		parametroeliminar:"id"
 	}, {
 		url: "Persona/FiltrarPersonas",
 		formulario: [
-
 			[
 				{
 					class: "col-md-6",
 					label:"Ingrese nombre completo",
 					type: "text",
-					name:"nombrecompleto"
+					name:"nombrecompleto",
 				}
-
 			]
-
 		]
 
 	},
@@ -37,14 +34,14 @@ function listar() {
 		type: "popup",
 	 	urlrecuperar: "Persona/RecuperarPersona",
 		parametrorecuperar: "id",
-		urlguardar:"Persona/guardarPersona",
+		urlguardar: "Persona/GuardarPersona",
 		formulario: [
 			[
 				{
-						class: "col-md-6 d-none",
-						label: "Id Persona",
-						type: "text",
-						name: "iidpersona"
+					class: "col-md-6 d-none",
+					label: "Id Persona",
+					type: "text",
+					name: "iidpersona"
 				},
 				{
 					class: "col-md-6",
@@ -91,17 +88,18 @@ function listar() {
 					checked:"rbMasculino",
 					name:"iidsexo"
 				},
-				//{
-				//	class: "col-md-6",
-				//	type: "file",
-				//	label: "Suba una foto",
-				//	name: "fotoEnviar",
-				//	preview: true,
-				//	imgwidth: 100,
-				//	imgheight: 100,
-				//	namefoto: "fotocadena",
-				//	classControl: "ob"
-				//}
+		//		{
+		//			class: "col-md-6",
+		//			label: "Foto",
+		//			type: "file",
+		//			label: "Suba una foto",
+		//			name: "fotoEnviar",
+		//			preview: true,
+		//			imgwidth: 100,
+		//			imgheight: 100,
+		//			namefoto: "fotocadena",
+		//			classControl: "ob"
+		//		}
 			]
 
 		]
