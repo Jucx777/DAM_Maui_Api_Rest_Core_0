@@ -5,10 +5,10 @@
 function listar() {
 	pintar({
 		url: "Persona/ListarPersonas",
-		cabeceras: [/*"Foto",*/"Nombre Completo", "Fecha Nacimiento", "Correo"],
-		propiedades: [/*"fotocadena",*/"nombrecompleto", "fechanacimientocadena", "correo"],
+		cabeceras: ["Foto","Nombre Completo", "Fecha Nacimiento", "Correo"],
+		propiedades: ["fotocadena","nombrecompleto", "fechanacimientocadena", "correo"],
 		propiedadId: "iidpersona",
-		//columnaimg: ["fotocadena"],
+		columnaimg: ["fotocadena"],
 		popup: true,
 
 		editar: true,
@@ -88,18 +88,18 @@ function listar() {
 					checked:"rbMasculino",
 					name:"iidsexo"
 				},
-		//		{
-		//			class: "col-md-6",
-		//			label: "Foto",
-		//			type: "file",
-		//			label: "Suba una foto",
-		//			name: "fotoEnviar",
-		//			preview: true,
-		//			imgwidth: 100,
-		//			imgheight: 100,
-		//			namefoto: "fotocadena",
-		//			classControl: "ob"
-		//		}
+				{
+					class: "col-md-6",
+					label: "Foto",
+					type: "file",
+					label: "Suba una foto",
+					name: "fotoenviar",
+					preview: true,
+					imgwidth: 100,
+					imgheight: 100,
+					namefoto: "fotocadena",
+					classControl: "ob"
+				}
 			]
 
 		]

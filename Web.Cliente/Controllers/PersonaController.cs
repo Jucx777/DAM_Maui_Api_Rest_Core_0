@@ -1,5 +1,6 @@
-﻿using CapaEntidad;
+﻿
 using Microsoft.AspNetCore.Mvc;
+using CapaEntidad;
 using System.Text.Json;
 using Web.Cliente.Clases;
 
@@ -29,7 +30,12 @@ namespace Web.Cliente.Controllers
             //List<PersonaCLS> lista = JsonSerializer.Deserialize<List<PersonaCLS>>(cadena);
             //return lista;
 
-            return await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona");
+            List<PersonaCLS> lista  =  await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona");
+
+            lista.Where(p => p.fotocadena == "").ToList().ForEach(p => p.fotocadena = "/img/nofoto.jpg");
+            return lista;
+
+            
         }
 
         //Filtrar personas
@@ -42,7 +48,9 @@ namespace Web.Cliente.Controllers
             //return lista;
             if (nombrecompleto != null)
             {
-                return await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona/" + nombrecompleto);
+                List<PersonaCLS>lista = await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase, "/api/Persona/" + nombrecompleto);
+                lista.Where(p => p.fotocadena == "").ToList().ForEach(p => p.fotocadena = "/img/nofoto.jpg");
+                return lista;
             }
             return await ListarPersonas();
         }
@@ -67,24 +75,24 @@ namespace Web.Cliente.Controllers
 
         //Metodo para Guardar Post
         //metodo para guardar
-        public async Task<int> GuardarPersona(PersonaCLS oPersonaCLS/*, IFormFile fotoenviar*/)
+        public async Task<int> GuardarPersona(PersonaCLS oPersonaCLS, IFormFile fotoenviar)
         {
 
-            //byte[] buffer = new byte[0];
-            //string nombrefoto = "";
-            //if (fotoenviar != null)
-            //{
-            //    using (MemoryStream ms = new MemoryStream())
-            //    {
-            //        fotoenviar.CopyTo(ms);
+            byte[] buffer = new byte[0];
+            string nombrefoto = "";
+            if (fotoenviar != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    fotoenviar.CopyTo(ms);
 
-            //        nombrefoto = fotoenviar.FileName;
-            //        buffer = ms.ToArray();
-            //    }
-            //}
+                    nombrefoto = fotoenviar.FileName;
+                    buffer = ms.ToArray();
+                }
+            }
 
-            //oPersonaCLS.nombrearchivo = nombrefoto;
-            //oPersonaCLS.archivo = buffer;
+            oPersonaCLS.nombrearchivo = nombrefoto;
+            oPersonaCLS.archivo = buffer;
 
 
             return await ClientHttp.Post(_httpClientFactory, urlbase, "/api/Persona/", oPersonaCLS);

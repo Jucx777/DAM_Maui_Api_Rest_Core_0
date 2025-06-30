@@ -34,9 +34,9 @@ namespace Web.Api.Controllers
                                  fechanacimientocadena = persona.Fechanacimiento == null ? "" :
                                     persona.Fechanacimiento.Value.ToString("yyyy-MM-dd"),
 
-                                 //fotocadena = persona.Varchivo == null ? "" :
-                                 //   "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
-                                 //   ";base64;" + Convert.ToBase64String(persona.Varchivo),
+                                 fotocadena = persona.Varchivo == null ? "" :
+                                    "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
+                                    ";base64," + Convert.ToBase64String(persona.Varchivo),
                              }).ToList();
 
                 }
@@ -73,9 +73,9 @@ namespace Web.Api.Controllers
                                  fechanacimientocadena = persona.Fechanacimiento == null ? "" :
                                  persona.Fechanacimiento.Value.ToShortDateString(),
 
-                                 //fotocadena = persona.Varchivo == null ? "" :
-                                 //   "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
-                                 //   ";base64;" + Convert.ToBase64String(persona.Varchivo),
+                                 fotocadena = persona.Varchivo == null ? "" :
+                                    "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
+                                    ";base64" + Convert.ToBase64String(persona.Varchivo),
 
                              }).ToList();
 
@@ -115,9 +115,9 @@ namespace Web.Api.Controllers
                                        persona.Fechanacimiento.Value.ToString("yyyy-MM-dd"),
                                        iidsexo = (int)persona.Iidsexo,
 
-                                       //fotocadena = persona.Varchivo == null ? "":
-                                       //"data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
-                                       //";base64;" + Convert.ToBase64String(persona.Varchivo),
+                                       fotocadena = persona.Varchivo == null ? "":
+                                       "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
+                                       ";base64," + Convert.ToBase64String(persona.Varchivo),
                                    }).First();
                 }
                 return oPersonaCLS;
@@ -177,14 +177,15 @@ namespace Web.Api.Controllers
                         oPersona.Correo = oPersonaCLS.correo;
                         oPersona.Fechanacimiento = DateTime.Parse(oPersonaCLS.fechanacimientocadena);
                         oPersona.Iidsexo = oPersonaCLS.iidsexo;
+                        oPersona.Btieneusuario = 0;
                         //oPersona.Btieneusuario = 0;
 
-                        //if (oPersonaCLS.nombrearchivo != "")
-                        //{
-                        //    oPersona.Vnombrearchivo = oPersonaCLS.nombrearchivo;
-                        //    oPersona.Varchivo = oPersonaCLS.archivo;
+                        if (oPersonaCLS.nombrearchivo != "")
+                        {
+                            oPersona.Vnombrearchivo = oPersonaCLS.nombrearchivo;
+                            oPersona.Varchivo = oPersonaCLS.archivo;
+                        }
 
-                        //}
                         oPersona.Bhabilitado = 1;
                         bd.Personas.Add(oPersona);
                         bd.SaveChanges();
@@ -202,12 +203,11 @@ namespace Web.Api.Controllers
                         oPersona.Fechanacimiento = DateTime.Parse(oPersonaCLS.fechanacimientocadena);
                         oPersona.Iidsexo = oPersonaCLS.iidsexo;
 
-                        //if (oPersonaCLS.nombrearchivo != "")
-                        //{
-                        //    oPersona.Vnombrearchivo = oPersonaCLS.nombrearchivo;
-                        //    oPersona.Varchivo = oPersonaCLS.archivo;
-
-                        //}
+                        if (oPersonaCLS.nombrearchivo != "")
+                        {
+                            oPersona.Vnombrearchivo = oPersonaCLS.nombrearchivo;
+                            oPersona.Varchivo = oPersonaCLS.archivo;
+                        }
 
                         bd.SaveChanges();
                         rpta = 1;

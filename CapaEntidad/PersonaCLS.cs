@@ -17,10 +17,10 @@
         public DateTime fechanacimiento { get; set; }
         public int iidsexo { get; set; } = 0;
 
-        ////Foto
-        //public string nombrearchivo { get; set; } = "";
-        //public string fotocadena { get; set; } = "";
-        //public byte [] archivo {  get; set; } 
+        //Foto
+        public string nombrearchivo { get; set; } = "";
+        public string fotocadena { get; set; } = "";
+        public byte[] archivo { get; set; }
 
     }
 }
