@@ -15,7 +15,6 @@ namespace Web.Api.Controllers
         //////////////////////////////////////////////////////////////////////////////////////////////////////
         //Listado sin filtro
         [HttpGet]
-
         public List<PersonaCLS> ListaPersona()
         {
             List<PersonaCLS> lista = new List<PersonaCLS>();
@@ -223,6 +222,39 @@ namespace Web.Api.Controllers
             catch (Exception ex)
             {
                 return rpta;
+            }
+        }
+
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        //Método para listar personas sin usuario
+        [HttpGet("listarPersonaSinUsuario")]
+        public List<PersonaCLS> listarPersonaSinUsuario()
+        {
+            List<PersonaCLS> lista = new List<PersonaCLS>();
+
+            try
+            {
+                using (DbAbafa4BdveterinariaContext bd = new DbAbafa4BdveterinariaContext())
+                {
+                    lista = (from persona in bd.Personas
+                             where persona.Bhabilitado == 1
+                             && persona.Btieneusuario == 0
+                             select new PersonaCLS
+                             {
+                                 iidpersona = persona.Iidpersona,
+                                 nombrecompleto = persona.Nombre + " " + 
+                                 persona.Appaterno + " " + 
+                                 persona.Apmaterno,
+                             }).ToList();
+
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                return lista;
             }
         }
     }
