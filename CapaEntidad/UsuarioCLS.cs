@@ -8,13 +8,18 @@ namespace CapaEntidad
 {
     public class UsuarioCLS
     {
+        // Insertar y Actualizar
+        public int iidusuario { get; set; } = 0;
+        public string nombreusuario { get; set; } = "";
+        public string contra { get; set; } = "";
+        public int iidtipousuario { get; set; } = 0;
+        public int iidpersona { get; set; } = 0;
+
+
+
         // Listar
-        public int iidusuario {  get; set; }
-        public string nombreusuario {  get; set; }
-        public string nombrepersona {  get; set; }
-        public string nombretipousuario {  get; set; }
-        public string fotopersona {  get; set; }
-
-
+        public string nombrepersona {  get; set; } = "";
+        public string nombretipousuario {  get; set; } = "";
+        public string fotopersona {  get; set; } = "";
     }
 }

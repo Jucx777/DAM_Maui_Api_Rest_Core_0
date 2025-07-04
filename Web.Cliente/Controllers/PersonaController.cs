@@ -74,7 +74,7 @@ namespace Web.Cliente.Controllers
         }
 
         //Metodo para Guardar Post
-        //metodo para guardar
+    
         public async Task<int> GuardarPersona(PersonaCLS oPersonaCLS, IFormFile fotoenviar)
         {
 
@@ -96,6 +96,16 @@ namespace Web.Cliente.Controllers
 
 
             return await ClientHttp.Post(_httpClientFactory, urlbase, "/api/Persona/", oPersonaCLS);
+        }
+
+
+        //metodo para listar personas sin usuario
+        public async Task<List<PersonaCLS>> listarPersonasSinUsuario()
+        {
+            List<PersonaCLS> lista = await ClientHttp.GetAll<PersonaCLS>(_httpClientFactory, urlbase,
+                "api/Persona/listarPersonaSinUsuario");
+
+            return lista;
         }
 
         public IActionResult Index()

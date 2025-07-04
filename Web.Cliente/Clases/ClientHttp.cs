@@ -97,5 +97,30 @@ namespace Web.Cliente.Clases
             }
         }
 
+
+        // Metodo Guardar POST para una lista 
+        public static async Task<List<T>> PostList<T>(IHttpClientFactory _httpClientFactory, string urlbase, string rutaapi, T obj)
+        {
+            try
+            {
+                var cliente = _httpClientFactory.CreateClient();
+                cliente.BaseAddress = new Uri(urlbase);
+                var response = await cliente.PostAsJsonAsync(rutaapi, obj);
+                if (response.IsSuccessStatusCode)
+                {
+                    string cadena = await response.Content.ReadAsStringAsync();
+                    return  JsonSerializer.Deserialize<List<T>>(cadena);
+                }
+                else
+                {
+                    return new List<T>();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new List<T>();
+            }
+        }
     }
 }

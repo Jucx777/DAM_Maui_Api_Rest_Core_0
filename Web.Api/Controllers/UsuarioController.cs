@@ -12,7 +12,7 @@ namespace Web.Api.Controllers
         //Método para listarUsusarios
 
         [HttpGet]
-        public List<UsuarioCLS> ListarUsuario()
+        public List<UsuarioCLS> listarUsuario()
         {
             List<UsuarioCLS> lista = new List<UsuarioCLS>();
 
@@ -29,8 +29,9 @@ namespace Web.Api.Controllers
                              select new UsuarioCLS
                              {
                                  iidusuario= usuario.Iidusuario,
-                                 nombreusuario= usuario.Nombreusuario,
-                                 nombrepersona= persona.Nombre+" "+persona.Appaterno+""+persona.Apmaterno,
+                                 nombreusuario= usuario.Nombreusuario.ToLower(),
+                                 nombrepersona= persona.Nombre+" "+persona.Appaterno+" "+persona.Apmaterno,
+                                 iidtipousuario = (int)usuario.Iidtipousuario,
                                  fotopersona = persona.Varchivo == null ? "" :
                                     "data:image/" + System.IO.Path.GetExtension(persona.Vnombrearchivo).Substring(1) +
                                     ";base64," + Convert.ToBase64String(persona.Varchivo),
@@ -41,6 +42,26 @@ namespace Web.Api.Controllers
             catch (Exception ex)
             {
                 return lista;
+            }
+            return lista;
+        }
+
+        //Método para buscarUsuarios por capas
+        [HttpPost]
+        public List<UsuarioCLS> buscarUsuarios([FromBody]UsuarioCLS oUsuarioCLS)
+        {
+            string nombreusuario = oUsuarioCLS.nombreusuario;
+            int iidtipousuario = oUsuarioCLS.iidtipousuario;
+
+            List<UsuarioCLS> lista = listarUsuario();
+
+            if (nombreusuario != "")
+            {
+                lista = lista.Where(p => p.nombreusuario.Contains(nombreusuario)).ToList();
+            }
+            if (iidtipousuario != 0)
+            {
+                lista = lista.Where(p => p.iidtipousuario == iidtipousuario).ToList();
             }
             return lista;
         }
