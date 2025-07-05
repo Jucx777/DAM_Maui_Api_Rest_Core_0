@@ -44,6 +44,13 @@ namespace Web.Cliente.Controllers
         }
 
 
+        //Método para insertar usuario POST
+        public async Task<int> guardarUsuario(UsuarioCLS oUsuarioCLS)
+        {
+            return await ClientHttp.Post<UsuarioCLS>(_httpClientFactory,
+                urlbase, "/api/Usuario/guardarDatos", oUsuarioCLS);
+        }
+
         public IActionResult Index()
         {
             return View();

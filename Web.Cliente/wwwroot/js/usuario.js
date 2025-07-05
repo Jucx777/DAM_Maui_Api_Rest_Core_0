@@ -3,7 +3,7 @@
 }
 
 async function listar() {
-//	var dataPersonaSinUsuario = await fetchGet("Persona/listarPersonasSinUsuario", "json", null, true)
+	var dataPersonaSinUsuario = await fetchGet("Persona/listarPersonasSinUsuario", "json", null, true)
 	var dataTipoUsuario = await fetchGet("TipoUsuario/listarTipoUsuario","json",null,true)
 	pintar({
 		url: "Usuario/listarUsuarios",
@@ -11,10 +11,10 @@ async function listar() {
 		propiedades: ["fotopersona","nombreusuario", "nombrepersona", "nombretipousuario"],
 		propiedadId: "iidusuario",
 		columnaimg: ["fotopersona"],
-//		titlePopup: "Usuario",
-//		editar: true,
+		titlePopup: "Usuario",
+		editar: false,
 //		eliminar:true,
-//		popup: true,
+		popup: true,
 //		urleliminar: "Usuario/eliminarUsuario",
 //		parametroeliminar: "id",
 //		callbackeliminar: async function () {
@@ -53,60 +53,56 @@ async function listar() {
 
 		]
 
-		//	},
-		//		{
-		//			urlguardar: "Usuario/guardarUsuario",
-		//			urlrecuperar: "Usuario/recuperarUsuario",
-		//			parametrorecuperar:"id",
-		//			callbackGuardar: async function () {
-		//				var dataPersonaSinUsuario = await fetchGet("Persona/listarPersonasSinUsuario", "json", null, true)
-		//				llenarCombo(dataPersonaSinUsuario, "cboPersonaFormulario", "iidpersona", "nombrecompleto",
-		//				 "-----Seleccione-----","0")
+	},{
+		//urlguardar: "Usuario/guardarUsuario",
+//			urlrecuperar: "Usuario/recuperarUsuario",
+//			parametrorecuperar:"id",
+//			callbackGuardar: async function () {
+//				var dataPersonaSinUsuario = await fetchGet("Persona/listarPersonasSinUsuario", "json", null, true)
+//				llenarCombo(dataPersonaSinUsuario, "cboPersonaFormulario", "iidpersona", "nombrecompleto",
+//				 "-----Seleccione-----","0")
 		//			},
-		//			type:"popup",
-		//			formulario: [
+		urlguardar: "Usuario/guardarUsuario",
+		type:"popup",
+		formulario: [
+			[
+				{
+					class: "col-md-6",
+					label: "Id Usuario",
+					readonly:true,
+					//type: "text",
+					name: "iidusuario"
+				},
+				{
+					class: "col-md-6",// ocultar",
+					label: "Persona",
+					type: "combobox",
+					name: "iidpersona",
+					data: dataPersonaSinUsuario,
+					propiedadmostrar: "nombrecompleto",
+					valuemostrar: "iidpersona",
+					id: "cboPersonaFormulario"
+				},
+				{
+					class: "col-md-6",
+					label: "Nombre Usuario",
+					//type: "text",
+					name: "nombreusuario"
+				},
+				{
+					class: "col-md-6",
+					label: "Tipo Usuario",
+					type: "combobox",
+					name: "iidtipousuario",
+					data: dataTipoUsuario,
+					propiedadmostrar: "nombretipousuario",
+					valuemostrar: "iidtipousuario",
+					id: "cboTipoUsuarioFormulario"
+				}
+			]
 
-		//				[
-		//					{
-		//						class: "col-md-6",
-		//						label: "Id Usuario",
-		//						readonly:true,
-		//						type: "text",
-		//						name: "iidusuario"
-		//					},
-		//					{
-		//						class: "col-md-6 ocultar",
-		//						label: "Persona",
-		//						type: "combobox",
-		//						name: "iidpersona",
-		//						data: dataPersonaSinUsuario,
-		//						propiedadmostrar: "nombrecompleto",
-		//						valuemostrar: "iidpersona",
-		//						id: "cboPersonaFormulario"
-		//					},
-		//					{
-		//						class: "col-md-6",
-		//						label: "Nombre Usuario",
-		//						type: "text",
-		//						name: "nombreusuario"
-		//					},
-		//					{
-		//						class: "col-md-6",
-		//						label: "Tipo Usuario",
-		//						type: "combobox",
-		//						name: "iidtipousuario",
-		//						data: dataTipoUsuario,
-		//						propiedadmostrar: "nombretipousuario",
-		//						valuemostrar: "iidtipousuario",
-		//						id: "cboTipoUsuarioFormulario"
-		//					}
+		]
 
-		//				]
-
-		//			]
-
-	}
-
-	)
+	})
 }
     
